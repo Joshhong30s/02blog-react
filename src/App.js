@@ -1,5 +1,13 @@
+import Home from './pages/home/Home'
+import Topbar from './topbar/Topbar'
+
 function App() {
-  return <div className='App'>blog app</div>
+  return (
+    <>
+      <Topbar />
+      <Home />
+    </>
+  )
 }
 
 export default App
