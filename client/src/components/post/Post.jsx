@@ -1,32 +1,26 @@
 import './post.css'
-import backcar from '../header/backcar.jpg'
+import { Link } from 'react-router-dom'
 
-export default function Post() {
+export default function Post({ post }) {
+  const PF = 'http://localhost:5000/images/'
   return (
     <div className='post'>
-      <img className='postImg' src={backcar} alt='' />
+      {post.photo && <img className='postImg' src={PF + post.photo} alt='' />}
       <div className='postInfo'>
         <div className='postCats'>
-          <span className='postCat'>Life</span>
-          <span className='postCat'>Parenting</span>
+          {post.categories.map((c) => (
+            <span className='postCat'>{c.name}</span>
+          ))}
         </div>
-        <span className='postTitle'>Lorem ipsum dolor sit amet</span>
+        <Link to={`/post/${post._id}`} className='link'>
+          <span className='postTitle'>{post.title}</span>
+        </Link>
         <hr />
-        <span className='postDate'>1 hour ago</span>
+        <span className='postDate'>
+          {new Date(post.createdAt).toLocaleDateString()}
+        </span>
       </div>
-      <p className='postDes'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
-        dolorem quas eligendi a cumque ducimus ratione assumenda nemo voluptatem
-        laborum tenetur provident iste culpa sed numquam molestias dolor earum
-        laborum tenetur provident iste culpa sed numquam molestias dolor earum
-        laborum tenetur provident iste culpa sed numquam molestias dolor earum
-        laborum tenetur provident iste culpa sed numquam molestias dolor earum
-        laborum tenetur provident iste culpa sed numquam molestias dolor earum
-        laborum tenetur provident iste culpa sed numquam molestias dolor earum
-        laborum tenetur provident iste culpa sed numquam molestias dolor earum
-        laborum tenetur provident iste culpa sed numquam molestias dolor earum
-        sapiente. sapiente.
-      </p>
+      <p className='postDes'>{post.desc}</p>
     </div>
   )
 }

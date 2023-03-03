@@ -1,26 +1,60 @@
 import './write.css'
 import backcar from '../../components/header/backcar.jpg'
+import { useContext, useState } from 'react'
+import axios from 'axios'
+import { Context } from '../../context/Context'
 
 export default function Write() {
+  const [title, setTitle] = useState('')
+  const [desc, setDesc] = useState('')
+  const [file, setFile] = useState('')
+  const { user } = useContext(Context)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const newPost = {
+      username: user.username,
+      title,
+      desc,
+    }
+    if (file) {
+      const data = new FormData()
+      const filename = Date.now() + file.name
+      data.append('name', filename)
+      data.append('file', file)
+      newPost.photo = filename
+      try {
+        await axios.post('/upload', data)
+      } catch (err) {}
+    }
+    try {
+      const res = await axios.post('/posts', newPost)
+      window.location.replace('/post/' + res.data._id)
+    } catch (err) {}
+  }
+
   return (
     <div className='write'>
-      {/* creates a form element with a classname'writeForm */}
-      <img className='writeImg' src={backcar} alt='' />
-      <form className='writeFrom'>
-        {/* creates a div element with classname writeformgroup, to grops form elements together */}
+      {file && (
+        <img className='writeImg' src={URL.createObjectURL(file)} alt='' />
+      )}
+      <form className='writeFrom' onSubmit={handleSubmit}>
         <div className='writeFormGroup'>
-          {/* add a label ele associated with file input, htmlfor is used to make the association */}
           <label htmlFor='fileInput'>
             <i class='writeIcon fa-solid fa-plus'></i>
           </label>
-          {/* add a input ele to upload a file, with none style it makes input element invisible */}
-          <input type='file' id='fileInput' style={{ display: 'none' }} />
-          {/* add input ele with placeholder"title", autofocus means user start typing while page refreshed */}
+          <input
+            type='file'
+            id='fileInput'
+            style={{ display: 'none' }}
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+
           <input
             type='text'
             placeholder='title'
             className='writeInput'
             autoFocus={true}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className='writeFormGroup'>
@@ -28,10 +62,13 @@ export default function Write() {
             placeholder='Tell you story...'
             type='text'
             className='writeInput writeText'
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
+        <button className='writeSubmit' type='submit'>
+          Publish
+        </button>
       </form>
-      <button className='writeSubmit'>Publish</button>
     </div>
   )
 }

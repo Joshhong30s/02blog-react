@@ -10,9 +10,11 @@ const userRoute = require('./routes/users')
 const postRoute = require('./routes/posts')
 const categoriesRoute = require('./routes/categories')
 const multer = require('multer')
+const path = require('path')
 
 dotenv.config()
 app.use(express.json())
+app.use('/images', express.static(path.join(__dirname, '/images')))
 
 const credentials = 'C:/Users/Josh/Desktop/02blog-react/certificate.pem'
 mongoose
@@ -29,7 +31,9 @@ const storage = multer.diskStorage({
     cb(null, 'images')
   },
   filename: (req, file, cb) => {
-    cb(null, 'me2.jpg')
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
+    const ext = path.extname(file.originalname)
+    cb(null, file.fieldname + '-' + uniqueSuffix + ext)
   },
 })
 

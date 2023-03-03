@@ -1,10 +1,16 @@
 /* eslint-disable no-octal-escape */
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import profile from '../../components/header/Profile.JPG'
+import { Context } from '../../context/Context'
 
 import './topbar.css'
 
 export default function Topbar() {
-  const user = true
+  const { user, dispatch } = useContext(Context)
+  const handleLogout = () => {
+    dispatch({ type: 'LOGOUT' })
+  }
   return (
     <div className='top'>
       <div className='topLeft'>
@@ -35,16 +41,14 @@ export default function Topbar() {
               WRITE
             </Link>
           </li>
-          <li className='topListItem'>{user && 'LOGOUT'}</li>
+          <li className='topListItem' onClick={handleLogout}>
+            {user && 'LOGOUT'}
+          </li>
         </ul>
       </div>
       <div className='topRight'>
         {user ? (
-          <img
-            className='topImg'
-            src='https://images.pexels.com/photos/2558605/pexels-photo-2558605.jpeg?auto=compress&cs=tinysrgb&w=1200'
-            alt=''
-          ></img>
+          <img className='topImg' src={profile} alt=''></img>
         ) : (
           <ul className='topList'>
             <li className='topListItem'>
