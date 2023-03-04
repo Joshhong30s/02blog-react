@@ -1,5 +1,4 @@
 import './singlePost.css'
-import wall from '../header/wall.jpg'
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -15,11 +14,13 @@ export default function SinglePost() {
     }
     getPost()
   }, [path])
+
+  const PF = 'http://localhost:5000/images/'
   return (
     <div className='singlePost'>
       <div className='singlePostWrapper'>
         {post.photo && (
-          <img src={post.photo} alt='' className='singlePostImg' />
+          <img src={PF + post.photo} alt='' className='singlePostImg' />
         )}
       </div>
       <h1 className='singlePostTitle'>

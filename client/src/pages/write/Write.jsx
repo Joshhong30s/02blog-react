@@ -1,5 +1,4 @@
 import './write.css'
-import backcar from '../../components/header/backcar.jpg'
 import { useContext, useState } from 'react'
 import axios from 'axios'
 import { Context } from '../../context/Context'
@@ -18,7 +17,7 @@ export default function Write() {
     }
     if (file) {
       const data = new FormData()
-      const filename = Date.now() + file.name
+      const filename = file.name
       data.append('name', filename)
       data.append('file', file)
       newPost.photo = filename
