@@ -1,3 +1,13 @@
 .home {
   display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+/* Making the margin 20px and the justify-content center when the screen is 1200px or larger. */
+@media only screen and (min-width: 1200px) {
+  .home {
+    max-width: 1600px;
+    margin: 20px auto;
+  }
 }

@@ -1,0 +1,96 @@
+.contact {
+  height: calc(100vh - 50px);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.contactImgContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.contactTitle {
+  font-size: 60px;
+  margin-bottom: 50px;
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: italic;
+  color: #1a1717cb;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.contactForm > label {
+  margin: 10px 0;
+}
+
+.visitorName {
+  padding: 10px;
+  background-color: white;
+  border: none;
+}
+
+.visitorEmail {
+  padding: 10px;
+  background-color: white;
+  border: none;
+}
+
+.visitorInput {
+  padding: 10px;
+  background-color: white;
+  border: none;
+}
+
+.contactButton {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: teal;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 12px 12px 8px 12px;
+}
+
+.backHomeButton {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  padding: 12px 12px 8px 12px;
+  width: 100%;
+  margin-top: 20px;
+  background-color: lightcoral;
+  cursor: pointer;
+  border: none;
+  padding: 12px 12px 8px 12px;
+  color: white;
+  border-radius: 10px;
+}
+
+.contactImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.5;
+}

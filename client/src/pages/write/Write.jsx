@@ -2,18 +2,23 @@ import './write.css'
 import { useContext, useState } from 'react'
 import axios from 'axios'
 import { Context } from '../../context/Context'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 
-export default function Write() {
+export default function Write(props) {
   const [title, setTitle] = useState('')
-  const [desc, setDesc] = useState('')
-  const [file, setFile] = useState('')
+  const [file, setFile] = useState(null)
+  const [categories, setCategories] = useState('')
   const { user } = useContext(Context)
+  const [content, setContent] = useState('')
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const newPost = {
       username: user.username,
       title,
-      desc,
+      desc: content,
+      categories: [categories],
     }
     if (file) {
       const data = new FormData()
@@ -36,37 +41,51 @@ export default function Write() {
       {file && (
         <img className='writeImg' src={URL.createObjectURL(file)} alt='' />
       )}
-      <form className='writeFrom' onSubmit={handleSubmit}>
-        <div className='writeFormGroup'>
+      <form className='writeForm' onSubmit={handleSubmit}>
+        <div className='writeFormElement'>
           <label htmlFor='fileInput'>
-            <i class='writeIcon fa-solid fa-plus'></i>
+            <i className='writeFileInput fa-solid fa-plus'></i>
           </label>
-          <input
-            type='file'
-            id='fileInput'
-            style={{ display: 'none' }}
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-
-          <input
-            type='text'
-            placeholder='title'
-            className='writeInput'
-            autoFocus={true}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <div className='writeFormElement'>
+            <input
+              type='file'
+              id='fileInput'
+              style={{ display: 'none' }}
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </div>
+          <div className='writeFormElement'>
+            <input
+              type='text'
+              placeholder='Title'
+              className='writeTitleInput'
+              autoFocus={true}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className='writeFormElement'>
+            <input
+              placeholder='Categories'
+              type='text'
+              className='writeCatInput'
+              onChange={(e) => setCategories(e.target.value)}
+            ></input>
+          </div>
+          {console.log('rendering')}
+          <div className='writeFormElement editor-container'>
+            <ReactQuill
+              value={content}
+              onChange={setContent}
+              onError={(err) => console.error(err)}
+              className='myEditorClass'
+              theme='snow'
+              placeholder='Here to write...'
+            />
+          </div>
+          <button className='writeFormElement writeSubmit' type='submit'>
+            Publish
+          </button>
         </div>
-        <div className='writeFormGroup'>
-          <textarea
-            placeholder='Tell you story...'
-            type='text'
-            className='writeInput writeText'
-            onChange={(e) => setDesc(e.target.value)}
-          ></textarea>
-        </div>
-        <button className='writeSubmit' type='submit'>
-          Publish
-        </button>
       </form>
     </div>
   )

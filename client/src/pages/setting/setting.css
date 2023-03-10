@@ -8,29 +8,34 @@
 }
 
 .settingTitle {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .settingUpdateTitle {
+  font-family: 'Roboto', sans-serif;
   font-size: 30px;
   margin-bottom: 20px;
   color: lightcoral;
 }
 
 .settingDeleteTitle {
+  font-family: 'Roboto', sans-serif;
   color: red;
   font-size: 12px;
   cursor: pointer;
 }
 
 .settingForm {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
 }
 
 .settingPP {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
   margin: 10px 0;
@@ -57,6 +62,7 @@
 }
 
 .settingForm > label {
+  font-family: 'Roboto', sans-serif;
   font-size: 20px;
   margin-top: 20px;
 }
@@ -70,6 +76,7 @@
 }
 
 .settingSubmit {
+  font-family: 'Roboto', sans-serif;
   width: 150px;
   align-self: center;
   border: none;

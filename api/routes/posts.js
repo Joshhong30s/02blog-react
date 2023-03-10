@@ -45,10 +45,10 @@ async function postUpdate(req, res) {
 }
 
 //delete a post
-router.delete('/:id', postGet)
+router.delete('/:id', postDelete)
 
 //postDelete function
-async function postGet(req, res) {
+async function postDelete(req, res) {
   const post = await Post.findById(req.params.id)
   if (post.username === req.body.username) {
     try {
@@ -88,7 +88,7 @@ async function postGetAll(req, res) {
       posts = await Post.find({ username: username })
     } else if (catName) {
       posts = await Post.find({
-        catogories: {
+        categories: {
           $in: [catName],
         },
       })

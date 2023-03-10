@@ -1,0 +1,77 @@
+.aboutContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: calc(100vh - 60px);
+  background: linear-gradient(
+    to right,
+    #0f3a8ad4,
+    #b4d0db 50%,
+    #fc9d9d 50%,
+    #a76cb9
+  );
+}
+
+.aboutColumn {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  margin: 0 20px;
+  color: #1a1717cb;
+  border-radius: 10px;
+}
+
+.aboutAvatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  transform: translate(0%, -10%);
+}
+
+.aboutName {
+  font-size: 24px;
+  font-family: 'Lora', sans-serif;
+  color: #1a1717cb;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  transform: translate(0%, 0%);
+}
+
+.aboutJob {
+  font-size: 22px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #1a1717cb;
+  font-weight: 300;
+}
+
+.aboutSkill {
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 50px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+.aboutInterest {
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+.aboutPersonality {
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}

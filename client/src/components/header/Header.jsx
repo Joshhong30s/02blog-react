@@ -1,14 +1,14 @@
 import './header.css'
-import baby from './baby.jpg'
+import parents from './parents5.jpg'
 
 export default function Header() {
   return (
     <div className='header'>
       <div className='headerTitles'>
-        <span className='headerTitleSm'>Daddy Josh</span>
-        <span className='headerTitleLg'>Programming & Parenting</span>
+        <span className='headerTitleSm'>Daddy Josh & Mommy Janice</span>
+        <span className='headerTitleLg'>Programming, Parenting, Living</span>
       </div>
-      <img className='headerImg' src={baby} alt='' />
+      <img className='headerImg' src={parents} alt='' />
     </div>
   )
 }

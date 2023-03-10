@@ -31,11 +31,13 @@ async function userLogin(req, res) {
     const user = await User.findOne({ username: req.body.username })
     if (!user) {
       return res.status(400).json('username does not exist')
+      console.log(res)
     }
 
     const validated = await bcrypt.compare(req.body.password, user.password)
     if (!validated) {
       return res.status(400).json('password is not correct')
+      console.log(res)
     }
 
     const { password, ...others } = user._doc

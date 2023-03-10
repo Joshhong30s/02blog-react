@@ -1,25 +1,37 @@
 .write {
-  padding-top: 50px;
-}
-
-.writeImg {
-  margin-left: 50px;
-  width: 70vw;
-  height: 250px;
-  border-radius: 10px;
-  object-fit: cover;
-}
-.writeForm {
-  position: relative;
-}
-
-.writeFormGroup {
-  margin-left: 150px;
+  padding-top: 10px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.writeIcon {
+.writeImg {
+  width: 71vw;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  object-fit: cover;
+  height: 20vh;
+}
+
+.writeForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: right;
+}
+
+.writeFormElement {
+  align-items: center;
+  margin-top: 20px;
+}
+
+.writeFileInput {
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -30,34 +42,48 @@
   font-size: 20px;
   color: rgb(121, 118, 118);
   cursor: pointer;
+  margin-left: 5px;
+  margin-top: 15px;
 }
 
-.writeInput {
-  font-size: 30px;
-  border: none;
-  padding: 20px;
+.writeTitleInput {
+  font-size: 24px;
+  color: #1a1717cb;
+  font-weight: 600;
+  padding: 10px;
   width: 70vw;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.writeInput:focus {
+.writeTitleInput:focus {
   outline: none;
 }
 
-.writeText {
+.writeCatInput {
   font-size: 20px;
-  height: 100vh;
+  padding: 10px;
+  width: 70vw;
 }
 
 .writeSubmit {
-  position: absolute;
-  top: 375px;
-  /* author set 20px here, why? */
-  right: 50px;
+  width: 10vw;
   color: white;
   background-color: teal;
-  padding: 10px;
+  padding: 8px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  margin-top: 15px;
+  font-family: 'Josefin sans', serif;
+  padding: 12px 12px 8px 12px;
+}
+
+.ql-editor {
+  min-height: 250px;
+  color: #1a1717cb;
+}
+
+.editor-container {
+  width: 100%;
 }

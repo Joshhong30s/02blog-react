@@ -1,5 +1,7 @@
 .register {
   height: calc(0100vh - 50px);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +15,12 @@
 }
 
 .registerTitle {
-  font-size: 50px;
+  font-size: 60px;
+  margin-bottom: 20px;
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: italic;
+  color: #1a1717cb;
 }
 
 .registerForm {
@@ -39,7 +46,9 @@
   border: none;
   color: white;
   border-radius: 10px;
-  padding: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  padding: 12px 12px 8px 12px;
 }
 
 .registerLoginButton {
@@ -49,7 +58,10 @@
   background-color: lightcoral;
   cursor: pointer;
   border: none;
-  padding: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  padding: 12px 12px 8px 12px;
   color: white;
   border-radius: 10px;
+  margin-top: 20px;
 }

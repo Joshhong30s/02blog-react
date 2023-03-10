@@ -16,11 +16,22 @@ export default function Post({ post }) {
           <span className='postTitle'>{post.title}</span>
         </Link>
         <hr />
-        <span className='postDate'>
-          {new Date(post.createdAt).toLocaleDateString()}
-        </span>
+        {/* <div className='postSubTitle'>
+          <span className='postAuthor'>
+            Author :&nbsp;
+            <Link to={`/?user=${post.username}`} className='link'>
+              <b>{post.username}</b>
+            </Link>
+          </span>
+          <span className='postDate'>
+            {new Date(post.createdAt).toLocaleDateString()}
+          </span>
+        </div> */}
       </div>
-      <p className='postDes'>{post.desc}</p>
+      {/* <div
+        className='postDes'
+        dangerouslySetInnerHTML={{ __html: post.desc }}
+      ></div> */}
     </div>
   )
 }
