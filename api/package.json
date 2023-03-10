@@ -6,8 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "dev": "nodemon index.js",
-    "clean": "rm -rf client/build",
-    "deploy": "render deploy"
+    "build": "npm run build"
   },
   "author": "",
   "license": "ISC",
