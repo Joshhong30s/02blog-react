@@ -6,7 +6,6 @@
   "scripts": {
     "start": "nodemon index.js",
     "dev": "nodemon index.js",
-    "build": "cd client && npm install && npm run build",
     "clean": "rm -rf client/build",
     "deploy": "render deploy"
   },
