@@ -17,27 +17,14 @@ dotenv.config()
 app.use(express.json())
 app.use('/images', express.static(path.join(__dirname, '/images')))
 
-fs.readFile('./certificate.pem', (err, data) => {
-  if (err) throw err
-
-  mongoose
-    .connect(process.env.MongoURL, {
-      sslKey: data,
-      sslCert: data,
-      serverApi: ServerApiVersion.v1,
-    })
-    .then(() => console.log('connected to MongoDB'))
-    .catch((err) => console.log(err))
-})
-
-// mongoose
-//   .connect(process.env.MongoURL, {
-//     sslKey: fs.readFileSync('./certificate.pem'),
-//     sslCert: fs.readFileSync('./certificate.pem'),
-//     serverApi: ServerApiVersion.v1,
-//   })
-//   .then(console.log('connected to MongoDB'))
-//   .catch((err) => console.log(err))
+mongoose
+  .connect(process.env.MongoURL, {
+    sslKey: fs.readFile('./certificate.pem'),
+    sslCert: fs.readFile('./certificate.pem'),
+    serverApi: ServerApiVersion.v1,
+  })
+  .then(console.log('connected to MongoDB'))
+  .catch((err) => console.log(err))
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
