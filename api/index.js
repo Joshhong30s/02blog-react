@@ -21,6 +21,7 @@ mongoose
   .connect(process.env.MongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1,
   })
   .then(() => {
     console.log('connected to MongoDB')
