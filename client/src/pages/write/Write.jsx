@@ -1,9 +1,9 @@
 import './write.css'
 import { useContext, useState } from 'react'
-import axios from 'axios'
 import { Context } from '../../context/Context'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import { axiosInstance } from '../../config'
 
 export default function Write(props) {
   const [title, setTitle] = useState('')
@@ -27,11 +27,11 @@ export default function Write(props) {
       data.append('file', file)
       newPost.photo = filename
       try {
-        await axios.post('/upload', data)
+        await axiosInstance.post('/upload', data)
       } catch (err) {}
     }
     try {
-      const res = await axios.post('/posts', newPost)
+      const res = await axiosInstance.post('/posts', newPost)
       window.location.replace('/post/' + res.data._id)
     } catch (err) {}
   }

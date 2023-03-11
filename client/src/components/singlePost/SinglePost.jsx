@@ -26,7 +26,7 @@ export default function SinglePost() {
     getPost()
   }, [path])
 
-  const PF = 'http://localhost:5000/images/'
+  const PF = 'https://react-blog-6nyi.onrender.com/images/'
 
   const handleDelete = async () => {
     try {
