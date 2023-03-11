@@ -17,7 +17,6 @@ dotenv.config()
 app.use(express.json())
 app.use('/images', express.static(path.join(__dirname, '/images')))
 
-const credentials = path.join(__dirname, 'certificate.pem')
 mongoose
   .connect(process.env.MongoURL, {
     sslKey: fs.readFileSync('./certificate.pem'),
