@@ -62,3 +62,15 @@ app.use('/api/categories', categoriesRoute)
 app.listen(process.env.PORT || 5000, () => {
   console.log('Backend is Running')
 })
+
+app.use(function (req, res, next) {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://serene-jalebi-075250.netlify.app'
+  )
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
+})
