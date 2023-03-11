@@ -17,6 +17,19 @@ dotenv.config()
 app.use(express.json())
 app.use('/images', express.static(path.join(__dirname, '/images')))
 
+fs.readFile('./certificate.pem', (err, data) => {
+  if (err) throw err
+
+  mongoose
+    .connect(process.env.MongoURL, {
+      sslKey: data,
+      sslCert: data,
+      serverApi: ServerApiVersion.v1,
+    })
+    .then(() => console.log('connected to MongoDB'))
+    .catch((err) => console.log(err))
+})
+
 // mongoose
 //   .connect(process.env.MongoURL, {
 //     sslKey: fs.readFileSync('./certificate.pem'),
@@ -25,28 +38,6 @@ app.use('/images', express.static(path.join(__dirname, '/images')))
 //   })
 //   .then(console.log('connected to MongoDB'))
 //   .catch((err) => console.log(err))
-
-const credentials = './certificate.pem'
-const client = new MongoClient('process.env.MongoURL', {
-  sslKey: credentials,
-  sslCert: credentials,
-  serverApi: ServerApiVersion.v1,
-})
-
-async function run() {
-  try {
-    await client.connect()
-    const database = client.db('testDB')
-    const collection = database.collection('testCol')
-    const docCount = await collection.countDocuments({})
-    console.log(docCount)
-    // perform actions using client
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close()
-  }
-}
-run().catch(console.dir)
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
