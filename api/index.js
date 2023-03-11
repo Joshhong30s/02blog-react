@@ -26,22 +26,27 @@ app.use('/images', express.static(path.join(__dirname, '/images')))
 //   .then(console.log('connected to MongoDB'))
 //   .catch((err) => console.log(err))
 
-const privateKeyPath = path.join(__dirname, 'certificate.pem')
-fs.readFile(privateKeyPath, (err, data) => {
-  if (err) {
-    console.error(err)
-    return
-  }
-  const privateKey = data.toString()
-  mongoose
-    .connect(process.env.MongoURL, {
-      sslKey: privateKey,
-      sslCert: privateKey,
-      serverApi: ServerApiVersion.v1,
-    })
-    .then(console.log('connected to MongoDB'))
-    .catch((err) => console.log(err))
+const credentials = './certificate.pem'
+const client = new MongoClient('process.env.MongoURL', {
+  sslKey: credentials,
+  sslCert: credentials,
+  serverApi: ServerApiVersion.v1,
 })
+
+async function run() {
+  try {
+    await client.connect()
+    const database = client.db('testDB')
+    const collection = database.collection('testCol')
+    const docCount = await collection.countDocuments({})
+    console.log(docCount)
+    // perform actions using client
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close()
+  }
+}
+run().catch(console.dir)
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
