@@ -19,12 +19,23 @@ app.use('/images', express.static(path.join(__dirname, '/images')))
 
 mongoose
   .connect(process.env.MongoURL, {
-    sslKey: fs.readFileSync('./certificate.pem'),
-    sslCert: fs.readFileSync('./certificate.pem'),
-    serverApi: ServerApiVersion.v1,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    UseCreateIndex: true,
+    UseFindAndModify: true,
   })
   .then(console.log('connected to MongoDB'))
   .catch((err) => console.log(err))
+
+// //SSL Link
+// mongoose
+//   .connect(process.env.MongoURL, {
+//     sslKey: fs.readFileSync('./certificate.pem'),
+//     sslCert: fs.readFileSync('./certificate.pem'),
+//     serverApi: ServerApiVersion.v1,
+//   })
+//   .then(console.log('connected to MongoDB'))
+//   .catch((err) => console.log(err))
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
