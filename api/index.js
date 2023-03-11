@@ -20,8 +20,8 @@ app.use('/images', express.static(path.join(__dirname, '/images')))
 const credentials = path.join(__dirname, 'certificate.pem')
 mongoose
   .connect(process.env.MongoURL, {
-    sslKey: fs.readFileSync(credentials),
-    sslCert: fs.readFileSync(credentials),
+    sslKey: fs.readFileSync('./certificate.pem'),
+    sslCert: fs.readFileSync('./certificate.pem'),
     serverApi: ServerApiVersion.v1,
   })
   .then(console.log('connected to MongoDB'))
