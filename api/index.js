@@ -21,11 +21,14 @@ mongoose
   .connect(process.env.MongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
+    serverApi: ServerApiVersion.v1,
   })
-  .then(console.log('connected to MongoDB'))
-  .catch((err) => console.log(err))
+  .then(() => {
+    console.log('connected to MongoDB')
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 // //SSL Link
 // mongoose
