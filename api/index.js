@@ -11,16 +11,17 @@ const postRoute = require('./routes/posts')
 const categoriesRoute = require('./routes/categories')
 const multer = require('multer')
 const path = require('path')
+const fs = require('fs')
 
 dotenv.config()
 app.use(express.json())
 app.use('/images', express.static(path.join(__dirname, '/images')))
 
-const credentials = 'C:/Users/Josh/Desktop/02blog-react/certificate.pem'
+const credentials = './certificate.pem'
 mongoose
   .connect(process.env.MongoURL, {
-    sslKey: credentials,
-    sslCert: credentials,
+    sslKey: fs.readFileSync(credentials),
+    sslCert: fs.readFileSync(credentials),
     serverApi: ServerApiVersion.v1,
   })
   .then(console.log('connected to MongoDB'))
