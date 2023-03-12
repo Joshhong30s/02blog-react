@@ -11,6 +11,8 @@ export default function Write(props) {
   const [categories, setCategories] = useState('')
   const { user } = useContext(Context)
   const [content, setContent] = useState('')
+  //upload image with prefix
+  const IMAGE_URL_PREFIX = 'https://reactblog.onrender.com/images/'
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -19,6 +21,8 @@ export default function Write(props) {
       title,
       desc: content,
       categories: [categories],
+      //upload image with prefix
+      photo: file ? IMAGE_URL_PREFIX + file.name : null,
     }
     if (file) {
       const data = new FormData()
