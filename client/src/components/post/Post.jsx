@@ -5,7 +5,9 @@ export default function Post({ post }) {
   const PF = 'https://reactblog.onrender.com/images/'
   return (
     <div className='post'>
-      {post.photo && <img className='postImg' src={PF + post.photo} alt='' />}
+      <Link to={`/post/${post._id}`} className='link'>
+        {post.photo && <img className='postImg' src={PF + post.photo} alt='' />}
+      </Link>
       <div className='postInfo'>
         <div className='postCats'>
           {post.categories.map((c) => (
