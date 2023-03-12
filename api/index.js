@@ -66,9 +66,20 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage })
-app.post('/api/upload', upload.single('file'), (req, res) => {
-  res.status(200).json('File has been uploaded')
+
+app.post('/api/upload', (req, res) => {
+  upload.single('file')(req, res, (err) => {
+    if (err) {
+      console.error(err)
+      return res.status(500).json(err)
+    }
+    return res.status(200).json('File has been uploaded')
+  })
 })
+
+// app.post('/api/upload', upload.single('file'), (req, res) => {
+//   res.status(200).json('File has been uploaded')
+// })
 
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
