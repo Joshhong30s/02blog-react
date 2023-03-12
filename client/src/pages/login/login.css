@@ -1,5 +1,5 @@
 .login {
-  height: calc(0100vh - 50px);
+  height: calc(100vh - 50px);
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
   display: flex;

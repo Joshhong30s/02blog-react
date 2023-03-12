@@ -10,7 +10,7 @@ const projects = [
     name: 'MERN Stack Blog',
     techstack: 'MongoDB, Express, Node.js, React',
     image: blog,
-    link: 'https://example.com/react-blog',
+    link: 'https://serene-jalebi-075250.netlify.app/',
   },
   {
     name: 'MERN Stack Dashboard',

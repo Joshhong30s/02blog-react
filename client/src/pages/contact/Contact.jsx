@@ -1,8 +1,6 @@
 import './contact.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-
-import contact from '../../components/header/contact.jpg'
 import { axiosInstance } from '../../config'
 
 export default function Register() {
@@ -25,7 +23,6 @@ export default function Register() {
 
   return (
     <div className='contact'>
-      <img className='contactImg' src={contact} alt='' />
       <div className='contactImgContainer'>
         <span className='contactTitle'>Contact</span>
         <form className='contactForm form' onSubmit={handleSubmit}>

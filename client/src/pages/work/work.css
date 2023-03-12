@@ -1,3 +1,7 @@
+.portfolio {
+  height: calc(100vh - 50px);
+}
+
 .project-card {
   position: relative;
   overflow: hidden;

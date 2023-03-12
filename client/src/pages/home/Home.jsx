@@ -4,7 +4,6 @@ import Posts from '../../components/posts/Posts'
 import './home.css'
 import { useEffect } from 'react'
 import { useState } from 'react'
-
 import { useLocation } from 'react-router-dom'
 import { axiosInstance } from '../../config'
 
