@@ -1,5 +1,6 @@
 .posts {
   display: flex;
+  flex: 9;
   flex-wrap: wrap;
   margin-right: 20px;
   margin-top: 10px;
@@ -8,6 +9,7 @@
 
 @media only screen and (min-width: 1200px) {
   .posts {
+    flex: 9;
     margin-right: 10px;
     width: 75%;
   }
