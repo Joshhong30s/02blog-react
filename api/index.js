@@ -73,7 +73,11 @@ app.post('/api/upload', (req, res) => {
       console.error(err)
       return res.status(500).json(err)
     }
-    return res.status(200).json('File has been uploaded')
+    return res.status(200).json({
+      message: 'File has been uploaded',
+      filename: req.file.filename,
+      path: req.file.path,
+    })
   })
 })
 
