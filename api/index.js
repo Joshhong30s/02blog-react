@@ -42,10 +42,7 @@ mongoose
 
 ///CORS handling middleware
 app.use((req, res, next) => {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://serene-jalebi-075250.netlify.app'
-  )
+  res.header('Access-Control-Allow-Origin', 'https://jjreactblog.netlify.app')
 
   res.header(
     'Access-Control-Allow-Headers',
