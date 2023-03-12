@@ -12,7 +12,7 @@ export default function Setting() {
   const [success, setSuccess] = useState(false)
 
   const { user, dispatch } = useContext(Context)
-  const PF = 'https://react-blog-6nyi.onrender.com/images/'
+  const PF = 'https://reactblog.onrender.com/images/'
 
   const handleSubmit = async (e) => {
     e.preventDefault()

@@ -8,7 +8,7 @@ export default function Topbar() {
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' })
   }
-  const PF = 'https://react-blog-6nyi.onrender.com/images/'
+  const PF = 'https://reactblog.onrender.com/images/'
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
   const handleLineClick = () => {
     if (isMobile) {
